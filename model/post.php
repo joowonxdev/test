@@ -5,7 +5,7 @@ class Post{
     private $connection;
 
     // table name
-    private $table_name = "post";
+    private $table_name = "Post";
 
 
 

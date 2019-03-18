@@ -5,7 +5,7 @@ class Author{
     private $connection;
 
     // table name
-    private $table_name = "author";
+    private $table_name = "Author";
 
 
     public function __construct($connection){

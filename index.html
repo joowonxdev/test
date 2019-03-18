@@ -27,6 +27,9 @@
         .post-image{
             width:100%;
         }
+        .entry{
+            padding-bottom:50px;
+        }
     </style>
 </head>
 <body>
@@ -43,9 +46,9 @@
 
 
     </Div>
-    <section class="text-center">
+    <section class="container">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-left">
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                 </li>
@@ -65,7 +68,7 @@
 
         function loadAuthor(post){
             var req = new XMLHttpRequest();
-            req.open('GET', 'http://localhost/author/read.php?author='+post.author_id);
+            req.open('GET', 'http://ec2-54-180-103-82.ap-northeast-2.compute.amazonaws.com/author/read.php?author='+post.author_id);
 
             req.onload = function(e){
                 if(req.readyState === XMLHttpRequest.DONE){
@@ -88,7 +91,7 @@
 
         function loadPost(){
             var req = new XMLHttpRequest();
-            req.open('GET', 'http://localhost/post/read.php');
+            req.open('GET', 'http://ec2-54-180-103-82.ap-northeast-2.compute.amazonaws.com/post/read.php');
 
             req.onload =  function(e){
                 if(req.readyState === XMLHttpRequest.DONE){
@@ -116,23 +119,23 @@
             }
             var html = '';
             html += '<div class="entry row">';
-            html += '<div class="row">';
-            html += '<div class="col-sm-7">';
+            html += '<div class="row justify-content-between">';
+            html += '<div class="col-sm-8">';
             html += '<h2>' + post.title + '</h2>';
-            html += '<Div>created ' + post.created_at + '</Div>';
-            html += '<Div>updated ' + post.updated_at + '</Div>';
-            html += '<div>'+ post.tags +'</div>';
+            html += '<h6>created ' + post.created_at + '</h6>';
+            html += '<h6>updated ' + post.updated_at + '</h6>';
+            html += '<h6>'+ post.tags +'</h6>';
             html += '</div>';
-            html += '<div class="col-sm-3">';
+            html += '<div class="col-sm-2 align-self-end">';
             html += '<div class="row"><image class="rounded-circle avatar col"  src="'+ author.avatar+'" />';
-            html += '<div>'+author.name+' </div>';
-            html += '<div>'+author.role+'</div>';
-            html += '<div>'+author.location+'</div></div>';
+            html += '<div class="author-info row col" ><h5 class="col-sm">'+author.name+' </h5>';
+            html += '<h6 class="col-sm">'+author.role+'</h6>';
+            html += '<h6 class="col-sm">'+author.location+'</h6></div></div>';
             html += '</div>';
             html += '</div>';
             html += '<div class="row">';
-            html += '<div class="col-sm-2"><Image class="post-image" src="'+post.image_url+'" /></div>';
-            html += '<div class="col-sm-10">'+post.body+'</div>';
+            html += '<div class="col-sm-2"><Image class=" img-thumbnail post-image" src="'+post.image_url+'" /></div>';
+            html += '<h6 class="col-sm-10">'+post.body+'</h6>';
             html += '</div>';
 
             document.getElementById('posts').innerHTML += html;

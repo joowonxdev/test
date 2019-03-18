@@ -2,9 +2,9 @@
 class DBClass {
 
     private $host = "localhost";
-    private $username = "root";
+    private $username = "joowonx";
     private $password = "wndnjs";
-    private $database = "asians";
+    private $database = "asiance";
 
     public $connection;
 
